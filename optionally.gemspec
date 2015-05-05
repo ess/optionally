@@ -10,7 +10,6 @@ Gem::Specification.new do |spec|
   spec.email         = ["pooster@gmail.com"]
 
   spec.summary       = %q{Quick and dirty required fields for options hashes}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
   spec.homepage      = "https://github.com/ess/optionally"
   spec.license       = "MIT"
 
