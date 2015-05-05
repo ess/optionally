@@ -1,8 +1,7 @@
 # Optionally
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/optionally`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is, like, so totally just a tiny little mix-in that lets your classes
+be super cereals about the stuff their methods get in options hashes, fersure.
 
 ## Installation
 
@@ -22,18 +21,38 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'optionally'
 
-## Development
+class Something
+  include Optionally::Required
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
+  def fersure(options = {})
+    check_required_options(options, :totally)
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+    puts "totally #{options[:totally]}"
+  end
+end
 
-## Contributing
+s = Something.new
+s.fersure(totally: 'like, freal')
+#  "totally like, freal"
+#  => nil
 
-1. Fork it ( https://github.com/[my-github-username]/optionally/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+s.fersure(bummer: "gag me with a spoon")
+#  ArgumentError: totally is required
+#  Big Ugly Stacktrace (TM)
+```
+
+## Contributing ##
+
+Do you use git-flow? I sure do. Please base anything you do off of
+[the develop branch](https://github.com/ess/optionally/tree/develop).
+
+1. Fork it.
+2. Perform some BDD magic. Seriously. Be testing.
+3. Submit a pull request.
+
+## License ##
+
+MIT License. Copyright 2015 Dennis Walters
