@@ -1,5 +1,5 @@
 require "optionally/version"
+require "optionally/required"
 
 module Optionally
-  # Your code goes here...
 end
